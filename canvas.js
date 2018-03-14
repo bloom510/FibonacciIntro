@@ -16,6 +16,7 @@ let PHI = (1 + Math.sqrt(5)) / 2; //Defining PHI
 
 //Canvas setup
 ctx.beginPath()
+ctx.lineJoin = "round";
 ctx.lineCap = "round";
 ctx.lineWidth = .0065;
 
@@ -25,7 +26,7 @@ let colors = ['#ff77aa', '#aaff77', '#77aaff', '#ffffff', '#000000'];
 //The meat and potatoes
 function goldenRotation(num) {
 
-    ctx.moveTo(x, y); //begin drawing from the start XY values
+    ctx.moveTo(x / PHI, y / PHI); //begin drawing from the start XY values ... REMOVE PHI TO REVERT TO ORIGINAL
     ctx.lineTo(x + (num * (num / 2)), y); //You can play around with this to change up the pattern 
 
     x -= stepX; //increment x
@@ -42,7 +43,7 @@ function goldenRotation(num) {
     if (x > width || y > height) { //if image has filled the frame, stop drawing and do stuff
         clearInterval(myTimer);
         ctx.resetTransform();
-        $('#canvas').fadeOut(5000)
+        // $('#canvas').fadeOut(5000)
     }
 
 }
