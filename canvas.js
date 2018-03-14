@@ -48,24 +48,8 @@ function goldenRotation(num) {
 
 
 }
-// let num = .2;
+
 let myTimer = setInterval(function() {
     //100 original
     goldenRotation(100)
-
-
 }, 1);
-
-
-
-
-
-// for (key in line_history) {
-
-
-//     ctx.moveTo(line_history[key].x, line_history[key].y);
-
-
-
-
-// }f
