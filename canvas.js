@@ -6,11 +6,11 @@ c.height = window.innerHeight;
 
 const width = c.width;
 const height = c.height;
+
 let done = false;
-//25x, .75 y
-var stepX = 5;
-var stepY = .4;
-var x = width / 2,
+let stepX = 5; //25x, .75 y
+let stepY = .4;
+let x = width / 2,
     y = (height / 2) - 50;
 
 let PHI = (1 + Math.sqrt(5)) / 2;
@@ -19,7 +19,7 @@ ctx.beginPath()
 ctx.lineCap = "round";
 ctx.lineWidth = .0065;
 
-var colors = ['#ff77aa', '#aaff77', '#77aaff', '#ffffff', '#000000'];
+let colors = ['#ff77aa', '#aaff77', '#77aaff', '#ffffff', '#000000'];
 
 
 
@@ -49,7 +49,7 @@ function goldenRotation(num) {
 
 }
 // let num = .2;
-var myTimer = setInterval(function() {
+let myTimer = setInterval(function() {
     //100 original
     goldenRotation(100)
 
