@@ -8,7 +8,7 @@ const width = c.width;
 const height = c.height;
 
 let stepX = 5; //Initial value: 25 ... increment for which X values will change
-let stepY = .4; //Initial value: .75 ... increment for which X values will change
+let stepY = 1; //Initial value: .75 ... increment for which X values will change
 let x = width / 2, //Initial x value at center stage
     y = (height / 2) - 50; //Initial y value at center stage
 
@@ -42,7 +42,7 @@ function goldenRotation(num) {
     if (x > width || y > height) { //if image has filled the frame, stop drawing and do stuff
         clearInterval(myTimer);
         ctx.resetTransform();
-        $('#canvas').fadeOut(6000)
+        $('#canvas').fadeOut(5000)
     }
 
 }
@@ -50,4 +50,4 @@ function goldenRotation(num) {
 //Could make this recursive instead of iterated by a timer.
 let myTimer = setInterval(function() {
     goldenRotation(100)
-}, 1);
+}, 5);
