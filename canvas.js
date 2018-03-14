@@ -34,9 +34,9 @@ function goldenRotation(num) {
     ctx.rotate((Math.PI * PHI) * .5);
     ctx.stroke();
 
-    ctx.font = '80px courier';
-    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-    ctx.fillText('hello world', width / 2, height / 2);
+    // ctx.font = '80px courier';
+    // ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+    // ctx.fillText('hello world', width / 2, height / 2);
 
     if (x > width || y > height) {
         clearInterval(myTimer);
@@ -44,12 +44,8 @@ function goldenRotation(num) {
         $('#canvas').fadeOut(6000)
     }
 
-
-
-
 }
 
 let myTimer = setInterval(function() {
-    //100 original
     goldenRotation(100)
 }, 1);
