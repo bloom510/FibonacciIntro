@@ -43,12 +43,12 @@ function goldenRotation(num) {
     if (x > width || y > height) { //if image has filled the frame, stop drawing and do stuff
         clearInterval(myTimer);
         ctx.resetTransform();
+        window.cancelAnimationFrame(myReq);
         // $('#canvas').fadeOut(5000)
     }
-
+    myReq = window.requestAnimationFrame(function() { goldenRotation(num) });
 }
 
 //Could make this recursive instead of iterated by a timer.
-let myTimer = setInterval(function() {
-    goldenRotation(100)
-}, 5);
+
+goldenRotation(100)
