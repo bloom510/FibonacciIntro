@@ -3,6 +3,10 @@ The following code allows the user (so far, the programmer) to
 instantiate a Scene class, which is an entity representing a drawing with unique parameters.
 The draw function takes a Scene as an argument and renders it to the canvas.
 
+NOTE: Currently the form input is not translating into the correct values. 
+I've been working on the logic for the most part, so the form will be polished later.
+As for now, values are hard coded in on submit.
+
 Here are some parameters to try out just to get a feel for it:
 *************************************
 Horizontal lines:
@@ -34,14 +38,15 @@ offsetY: affects the direction the lines points
 incX / incY: default is 0, will be used to increment offsetX/Y to add more variability to the mix
 *************************************
 */
+
 const c = document.getElementById('canvas');
 const ctx = c.getContext('2d');
 
 // //Canvas setup
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
-c.width = 550;
-c.height = 400;
+c.width = window.innerWidth - 50;
+c.height = window.innerHeight - 50;
 
 const width = c.width;
 const height = c.height;
@@ -62,45 +67,53 @@ class Scene {
         this.phi = phi;
     }
 }
+
 let draw = (scene) => {
-    //for each new scene, clear the canvas
-    if (hist) {
-        ctx.clearRect(0, 0, width, height);
-        hist = false;
-    }
-    //config for origin point
-    ctx.beginPath();
-    ctx.moveTo(scene.x - scene.offsetX, scene.y);
-    ctx.lineWidth = scene.lineWidth;
-    ctx.lineTo(scene.x + scene.offsetX, scene.y);
+
+
+    /* 
+    TODO ? :
+   - Find a way for user to specify custom line-plotting
+    formula for moveTo and lineTo.
+    - Find away for user to provide an increment for offsetX
+    */
+
+    //Spiral lotus
+    ctx.moveTo(scene.x, scene.y);
+    ctx.lineTo((scene.x + Math.pow(scene.offsetX, 2)), scene.y);
 
     //config for generative outcomes
-    scene.x -= scene.stepX;
+    scene.x -= scene.stepX / 2;
     scene.y += scene.stepY;
-    // scene.offsetX++;
-    //+= incX, finish later
-    // offsetY += incY;
+
 
     //If enabled, use the golden number
     if (scene.phi) {
-        //rotate around a center point
-        ctx.translate((canvas.width), (canvas.height) / 2);
+
+        console.log('phi!')
+            //rotate around a center point
+        ctx.translate((canvas.width), (canvas.height / 2));
         //circular rotation by the golden number
         ctx.rotate((Math.PI * PHI) * .5);
     }
-
+    ctx.lineWidth = scene.lineWidth;
     ctx.stroke();
 
-    let myReq = window.requestAnimationFrame(function() {
-        draw(scene);
-    });
+    timer = requestAnimationFrame(function() {
+        draw(scene)
+    })
 
     //if image has filled the frame, stop drawing and do stuff
-    if (scene.x > width || scene.y > height) {
-        alert('done')
-        cancelAnimationFrame(myReq);
-        hist = true;
+    if (scene.x > width * 2 || scene.y > height * 2) {
+        ctx.closePath();
+        cancelAnimationFrame(timer);
+        // ctx.clearRect(0, 0, width, height);
+        console.log(scene)
         return;
     }
+
+    $('submit').on('click', function() {
+        cancelAnimationFrame(timer);
+    })
 
 }

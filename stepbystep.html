@@ -31,9 +31,45 @@
 
 
 <body>
-    <div id='status'></div>
+    <form>
+        <input type='text' id='stepX' placeholder='stepX'>
+        <input type='text' id='stepY' placeholder='stepY'>
+        <input type='text' id='offsetX' placeholder='offsetX'>
+        <input type='text' id='lineWidth' placeholder='lineWidth'>
+        <input type='text' id='phi' placeholder='phi?'>
+        <input type='submit'>
+    </form>
     <canvas id='canvas'></canvas>
     <script src='steps.js'></script>
+    <script>
+        $('form').submit(function(e) {
+            e.preventDefault()
+
+            ctx.resetTransform();
+            ctx.clearRect(0, 0, width, height);
+
+            ctx.beginPath();
+            ctx.lineJoin = "round";
+            ctx.lineCap = "round";
+            let stepX = 5;
+            let stepY = .5
+            let x = width / 2;
+            let y = (height / 2) - 50;
+            let offsetX = 100;
+            // let offsetY = parseInt($('#offsetY').val().trim(''));
+            let offsetY = 0;
+            let lineWidth = 0.008;
+            let incX = 0;
+            let incY = 0;
+            let phi = true;
+            console.log('phi', phi)
+            let scene = new Scene(stepX, stepY, x, y, offsetX, offsetY, lineWidth, incX, incY, phi);
+            console.log(scene)
+            draw(scene)
+            console.log('width', lineWidth)
+
+        });
+    </script>
 
 </body>
 
