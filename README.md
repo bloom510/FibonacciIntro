@@ -6,4 +6,6 @@ A site intro / load screen made with HTML5 Canvas and the Golden Ratio.
 <p>
 /Process reworks the code into a more moderular, object oriented format demonstrating the creative process for the series of pieces.
 </p>
+<p>
 ![Image of a Spiralling Lotus](./lotusspiral.gif)
+</p>
