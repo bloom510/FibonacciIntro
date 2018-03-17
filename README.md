@@ -7,5 +7,5 @@ A site intro / load screen made with HTML5 Canvas and the Golden Ratio.
 /Process reworks the code into a more moderular, object oriented format demonstrating the creative process for the series of pieces.
 </p>
 <p>
-![Image of a Spiralling Lotus](./lotusspiral.gif)
+<img src='https://github.com/bloom510/FibonacciIntro/blob/master/lotusspiral.gif?raw=true' />
 </p>
