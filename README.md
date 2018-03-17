@@ -1,7 +1,7 @@
 # FibonacciIntro
 <p>
 This repository contains the code that serves as the basis for a series of my
-JavaScript+HTML5 Canvas pieces, <em>Fun With Fibonacci</em>.
+JavaScript+HTML5 Canvas pieces, <em>Fun With Fibonacci</em> (more gifs will be added to this readme soon).
 </p>
 <p>
 /HardCoded contains the initial code playground in which paramters are hard coded.
