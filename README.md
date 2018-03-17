@@ -1,6 +1,8 @@
 # FibonacciIntro
 <p>
 A site intro / load screen made with HTML5 Canvas and the Golden Ratio.
+</p>
+<p>
 /HardCoded contains the initial code playground in which paramters are hard coded.
 </p>
 <p>
