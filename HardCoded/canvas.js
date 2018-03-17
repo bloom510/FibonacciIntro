@@ -13,12 +13,9 @@ let x = width / 2, //Initial x value at center stage
     y = (height / 2) - 50; //Initial y value at center stage
 
 let PHI = (1 + Math.sqrt(5)) / 2; //Defining PHI
+var colors = ["AntiqueWhite", "Beige", "Bisque", "BlanchedAlmond", "Brown", "BurlyWood", "CadetBlue", "Chocolate", "Cornsilk", "Crimson", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkOliveGreen", "Darkorange", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateGray", "DarkSlateGrey", "DarkViolet", "DeepPink", "DimGray", "DimGrey", "FireBrick", "FloralWhite", "ForestGreen", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LemonChiffon", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightSalmon", "LightSeaGreen", "LightSlateGray", "LightSlateGrey", "LightYellow", "Linen", "Maroon", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"];
 
 //Canvas setup
-
-
-
-var colors = ["AntiqueWhite", "Beige", "Bisque", "BlanchedAlmond", "Brown", "BurlyWood", "CadetBlue", "Chocolate", "Cornsilk", "Crimson", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkOliveGreen", "Darkorange", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateGray", "DarkSlateGrey", "DarkViolet", "DeepPink", "DimGray", "DimGrey", "FireBrick", "FloralWhite", "ForestGreen", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LemonChiffon", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightSalmon", "LightSeaGreen", "LightSlateGray", "LightSlateGrey", "LightYellow", "Linen", "Maroon", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"];
 ctx.beginPath()
 ctx.lineJoin = "round";
 ctx.lineCap = "round";
@@ -39,9 +36,6 @@ function goldenRotation(num) {
 
     ctx.stroke(); //render to canvas
     ctx.closePath();
-    // ctx.font = '80px courier';
-    // ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-    // ctx.fillText('hello world', width / 2, height / 2);
 
     if (x > width * 2 || y > height * 2) { //if image has filled the frame, stop drawing and do stuff
         // clearInterval(myTimer);

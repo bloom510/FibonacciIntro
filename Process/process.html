@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Golden Ratio</title>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: ivory;
+        }
+        
+        #container {
+            max-width: 960px;
+            max-height: 740px;
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            /* border: 2px solid; */
+        }
+        
+        #canvas {
+            border: 2px solid;
+            width: 100%;
+            height: 100%;
+            /* margin: 0 auto; */
+        }
+        
+        #title {
+            z-index: 0;
+            color: red;
+            font-family: helvetica;
+            position: relative;
+            text-align: center;
+            margin-top: 28%;
+        }
+        
+        input[type='button'] {
+            background-color: teal;
+            color: white;
+            margin: 0 auto;
+            width: 100px;
+            height: 50px;
+        }
+        
+        form {
+            /* border: 2px solid; */
+            text-align: center;
+            margin: 0 auto;
+            width: 65%;
+            margin-bottom: 1%;
+        }
+        
+        #vars {
+            float: left;
+            margin-top: 5%;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <div id='vars'>
+        <div>stepX: <span id='stepX'></span></div>
+        <div>stepY: <span id='stepY'></span></div>
+        <div>x: <span id='x'></span></div>
+        <div>y: <span id='y'></span></div>
+        <div>offsetX: <span id='offsetX'></span></div>
+        <div>offsetY: <span id='offsetY'></span></div>
+        <div>lineWidth: <span id='lineWidth'></span></div>
+        <div>phi: <span id='phi'></span></div>
+    </div>
+    <div id='container'>
+        <form>
+            <input type='button' value='Step 1' id='lines'>
+            <input type='button' value='Step 2' id='triangle'>
+            <input type='button' value='Step 3' id='triangle-fib'>
+            <input type='button' value='Spiral Lotus' id='spiral_lotus'>
+            <input type='button' value='Sunflower' id='sunflower'>
+        </form>
+        <canvas id='canvas'></canvas>
+    </div>
+
+    <script src='process.js'></script>
+    <script>
+        $('#lines').click(function() {
+            cancelAnimationFrame(currentFrame);
+            ctx.resetTransform();
+            ctx.clearRect(0, 0, width, height);
+            let stepX = 0;
+            let stepY = 10;
+            let x = 300;
+            let y = 0;
+            let offsetX = 20;
+            // let offsetY = parseInt($('#offsetY').val().trim(''));
+            let offsetY = 0;
+            let lineWidth = 0.75;
+
+            let phi = false;
+            let scene = new Scene(x, y, stepX, stepY, offsetX, offsetY, lineWidth, phi);
+            console.log(scene)
+            $('#stepX').text(stepX)
+            $('#stepY').text(stepY)
+            $('#x').text(x)
+            $('#y').text(y)
+            $('#offsetX').text(offsetX)
+            $('#offsetY').text(offsetY)
+            $('#lineWidth').text(lineWidth)
+            $('#phi').text(phi)
+            draw(scene)
+        });
+        $('#triangle').click(function() {
+            cancelAnimationFrame(currentFrame);
+            ctx.resetTransform();
+            ctx.clearRect(0, 0, width, height);
+            let stepX = 0;
+            let stepY = 10;
+            let x = 500;
+            let y = 0;
+            let offsetX = 0;
+            // let offsetY = parseInt($('#offsetY').val().trim(''));
+            let offsetY = 0;
+            let lineWidth = 0.75;
+            let phi = false;
+            let scene = new Scene(x, y, stepX, stepY, offsetX, offsetY, lineWidth, phi);
+            console.log(scene)
+            $('#stepX').text(stepX)
+            $('#stepY').text(stepY)
+            $('#x').text(x)
+            $('#y').text(y)
+            $('#offsetX').text(offsetX)
+            $('#offsetY').text(offsetY)
+            $('#lineWidth').text(lineWidth)
+            $('#phi').text(phi)
+            draw(scene, true)
+        });
+        $('#triangle-fib').click(function() {
+            cancelAnimationFrame(currentFrame);
+            ctx.resetTransform();
+            ctx.clearRect(0, 0, width, height);
+            let stepX = 0;
+            let stepY = 10;
+            let x = 250;
+            let y = 0;
+            let offsetX = 0;
+            // let offsetY = parseInt($('#offsetY').val().trim(''));
+            let offsetY = 0;
+            let lineWidth = 0.75;
+
+            let phi = true;
+            let scene = new Scene(x, y, stepX, stepY, offsetX, offsetY, lineWidth, phi);
+            console.log(scene)
+            $('#stepX').text(stepX)
+            $('#stepY').text(stepY)
+            $('#x').text(x)
+            $('#y').text(y)
+            $('#offsetX').text(offsetX)
+            $('#offsetY').text(offsetY)
+            $('#lineWidth').text(lineWidth)
+            $('#phi').text(phi)
+            draw(scene, true)
+        });
+        $('#sunflower').click(function() {
+            cancelAnimationFrame(currentFrame);
+            ctx.resetTransform();
+            ctx.clearRect(0, 0, width, height);
+            let stepX = 5;
+            let stepY = .35;
+            let x = width / 2;
+            let y = (height / 2) - 50;
+            let offsetX = 500;
+            // let offsetY = parseInt($('#offsetY').val().trim(''));
+            let offsetY = 0;
+            let lineWidth = 0.35;
+            let phi = true;
+            console.log('phi', phi)
+            let scene = new Scene(x, y, stepX, stepY, offsetX, offsetY, lineWidth, phi);
+            console.log(scene)
+            $('#stepX').text(stepX)
+            $('#stepY').text(stepY)
+            $('#x').text(x)
+            $('#y').text(y)
+            $('#offsetX').text(offsetX)
+            $('#offsetY').text(offsetY)
+            $('#lineWidth').text(lineWidth)
+            $('#phi').text(phi)
+            draw(scene)
+            console.log('width', lineWidth)
+
+        });
+        $('#spiral_lotus').click(function() {
+            cancelAnimationFrame(currentFrame);
+            ctx.resetTransform();
+            ctx.clearRect(0, 0, width, height);
+            let stepX = 5;
+            let stepY = 1;
+            let x = width / 2;
+            let y = (height / 2) - 50;
+            let offsetX = 500;
+            // let offsetY = parseInt($('#offsetY').val().trim(''));
+            let offsetY = 0;
+            let lineWidth = 0.5;
+
+            let phi = true;
+            console.log('phi', phi)
+            let scene = new Scene(x, y, stepX, stepY, offsetX, offsetY, lineWidth, phi);
+            console.log(scene)
+            $('#stepX').text(stepX)
+            $('#stepY').text(stepY)
+            $('#x').text(x)
+            $('#y').text(y)
+            $('#offsetX').text(offsetX)
+            $('#offsetY').text(offsetY)
+            $('#lineWidth').text(lineWidth)
+            $('#phi').text(phi)
+            draw(scene)
+            console.log('width', lineWidth)
+
+        });
+    </script>
+
+</body>
+
+</html>
